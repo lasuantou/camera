@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btnHandlerThread"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="handlerthread" />
+
+        <Button
+            android:id="@+id/btnWindowManager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="windowmanager" />
+
+        <Button
+            android:id="@+id/btnPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="permission" />
+
+        <Button
+            android:id="@+id/btnEasyPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EasyPermission" />
+
+        <Button
+            android:id="@+id/btnMyPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="封装后的Permission" />
+
+        <Button
+            android:id="@+id/btnTelephony"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telephony" />
+
+        <Button
+            android:id="@+id/btnFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="File" />
+
+        <Button
+            android:id="@+id/btnDataBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="database" />
+
+        <Button
+            android:id="@+id/btnUI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UI" />
+
+    </LinearLayout>
+</ScrollView>
+
