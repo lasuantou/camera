@@ -1,6 +1,8 @@
 package com.cs.camera.camera1
 
+import android.Manifest
 import android.app.Activity
+import android.content.pm.PackageManager
 import android.graphics.ImageFormat
 import android.graphics.Matrix
 import android.graphics.RectF
@@ -9,7 +11,9 @@ import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.cs.camera.log
+import com.cs.camera.toast
 
 /**
  * author :  chensen
@@ -66,6 +70,10 @@ class CameraHelper(activity: Activity, surfaceView: SurfaceView) : Camera.Previe
     //打开相机
     private fun openCamera(cameraFacing: Int = Camera.CameraInfo.CAMERA_FACING_BACK): Boolean {
         val supportCameraFacing = supportCameraFacing(cameraFacing)
+        if (ContextCompat.checkSelfPermission(mActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            mActivity.toast("没有相机权限！")
+            return false
+        }
         if (supportCameraFacing) {
             try {
                 mCamera = Camera.open(cameraFacing)

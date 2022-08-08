@@ -1,10 +1,14 @@
 package com.cs.camera.camera2
 
 import android.os.Bundle
+import android.view.TextureView
 import androidx.appcompat.app.AppCompatActivity
 import android.view.WindowManager
 import com.cs.camera.R
+import kotlinx.android.synthetic.main.activity_camera.*
 import kotlinx.android.synthetic.main.activity_camera2.*
+import kotlinx.android.synthetic.main.activity_camera2.btnTakePic
+import kotlinx.android.synthetic.main.activity_camera2.ivExchange
 
 /**
  * author :  chensen
@@ -32,5 +36,14 @@ class CameraActivity2 : AppCompatActivity() {
         mCamera2Helper.releaseThread()
     }
 
+    override fun onStop(){
+        super.onStop()
+        mCamera2Helper.stopCamera()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mCamera2Helper.resumeCamera()
+    }
 }
 

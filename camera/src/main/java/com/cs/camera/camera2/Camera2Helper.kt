@@ -139,7 +139,6 @@ class Camera2Helper(val mActivity: Activity, private val mTextureView: TextureVi
 
         mImageReader = ImageReader.newInstance(mSavePicSize.width, mSavePicSize.height, ImageFormat.JPEG, 1)
         mImageReader?.setOnImageAvailableListener(onImageAvailableListener, mCameraHandler)
-
         openCamera()
     }
 
@@ -171,7 +170,6 @@ class Camera2Helper(val mActivity: Activity, private val mTextureView: TextureVi
             mActivity.toast("没有相机权限！")
             return
         }
-
         mCameraManager.openCamera(mCameraId, object : CameraDevice.StateCallback() {
             override fun onOpened(camera: CameraDevice) {
                 log("onOpened")
@@ -201,6 +199,7 @@ class Camera2Helper(val mActivity: Activity, private val mTextureView: TextureVi
         captureRequestBuilder.addTarget(surface)  // 将CaptureRequest的构建器与Surface对象绑定在一起
         captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH)      // 闪光灯
         captureRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE) // 自动对焦
+
 
         // 为相机预览，创建一个CameraCaptureSession对象
         cameraDevice.createCaptureSession(arrayListOf(surface, mImageReader?.surface), object : CameraCaptureSession.StateCallback() {
@@ -331,6 +330,16 @@ class Camera2Helper(val mActivity: Activity, private val mTextureView: TextureVi
         return exchange
     }
 
+
+    fun stopCamera(){
+        mCameraDevice?.close()
+        }
+
+    fun resumeCamera(){
+        if(mTextureView.isAvailable){
+            initCameraInfo()
+        }
+    }
 
     fun releaseCamera() {
         mCameraCaptureSession?.close()
